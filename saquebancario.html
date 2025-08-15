@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Saque Bancário</title>
+  <script>
+    
+    var saldo = 500; 
+
+    alert("Seu saldo atual é: R$ " + saldo.toFixed(2));
+
+    
+    var saque = prompt("Digite o valor que deseja sacar:");
+
+    if (saque !== null) {
+      saque = parseFloat(saque);
+
+      if (!isNaN(saque) && saque > 0) {
+        if (saque <= saldo) {
+          saldo -= saque;
+          alert("Saque realizado com sucesso! Seu novo saldo é: R$ " + saldo.toFixed(2));
+        } else {
+          alert("Saldo insuficiente! Você só tem R$ " + saldo.toFixed(2));
+        }
+      } else {
+        alert("Valor de saque inválido.");
+      }
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
