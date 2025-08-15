@@ -4,32 +4,70 @@
   <meta charset="UTF-8">
   <title>Caixa Eletrônico Simples</title>
   <script>
-    var saldo = 2000; 
+    var saldo = 1000;
 
     function mostrarSaldo() {
-      alert("Seu saldo atual é: R$ " + saldo + ",00");
+      alert("Seu saldo atual é: R$ " + saldo.toFixed(2));
     }
 
     function sacar() {
-      var saque = prompt("Digite o valor para saque (somente números inteiros):");
+      var saque = prompt("Digite o valor para saque:");
       if (saque !== null) {
-        saque = parseInt(saque); 
+        saque = parseFloat(saque);
         if (!isNaN(saque) && saque > 0) {
           if (saque <= saldo) {
             saldo -= saque;
-            alert("Saque de R$ " + saque + ",00 realizado com sucesso!");
+            alert("Saque de R$ " + saque.toFixed(2) + " realizado com sucesso!");
           } else {
             alert("Saldo insuficiente!");
           }
         } else {
-          alert("Valor inválido. Digite um número inteiro positivo.");
+          alert("Valor inválido.");
         }
       }
     }
 
     function depositar() {
-      var deposito = prompt("Digite o valor para depósito (somente números inteiros):");
+      var deposito = prompt("Digite o valor para depósito:");
       if (deposito !== null) {
+        deposito = parseFloat(deposito);
+        if (!isNaN(deposito) && deposito > 0) {
+          saldo += deposito;
+          alert("Depósito de R$ " + deposito.toFixed(2) + " realizado com sucesso!");
+        } else {
+          alert("Valor inválido.");
+        }
+      }
+    }
+
+    
+    var opcao;
+    do {
+      opcao = prompt(
+        "Escolha uma opção:\n" +
+        "1 - Ver saldo\n" +
+        "2 - Sacar\n" +
+        "3 - Depositar\n" +
+        "4 - Sair"
+      );
+
+      if (opcao === "1") {
+        mostrarSaldo();
+      } else if (opcao === "2") {
+        sacar();
+      } else if (opcao === "3") {
+        depositar();
+      } else if (opcao !== "4") {
+        alert("Opção inválida.");
+      }
+    } while (opcao !== "4");
+
+    alert("Obrigado por usar o caixa eletrônico!");
+  </script>
+</head>
+<body>
+</body>
+</html>
         deposito = parseInt(deposito); 
         if (!isNaN(deposito) && deposito > 0) {
           saldo += deposito;
